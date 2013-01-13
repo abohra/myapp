@@ -1,3 +1,4 @@
+//Testing Commits
 package com.myapp.bean;
 
 import javax.xml.bind.annotation.XmlRootElement;
