@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DBManager {
+public class DBManager { 
 
 	@Autowired
 	@Qualifier("testDbDao")

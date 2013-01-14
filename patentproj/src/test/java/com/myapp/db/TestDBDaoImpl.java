@@ -11,8 +11,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-@Component
-public class TestDBDaoImpl {
+@Component 
+public class TestDBDaoImpl { 
 
 	AbstractXmlApplicationContext context;
 	static protected AbstractDBDao dao;

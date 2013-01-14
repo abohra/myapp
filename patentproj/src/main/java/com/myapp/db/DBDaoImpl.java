@@ -3,7 +3,7 @@ package com.myapp.db;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class DBDaoImpl implements AbstractDBDao {
+public class DBDaoImpl implements AbstractDBDao { 
 
 	private SessionFactory sessionFactory;
 
