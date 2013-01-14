@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.stereotype.Component;
 
 import com.myapp.bean.TestBean;
-
+//Testting commit-ankur
 @Component
 @Path("/test")
 @Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON,MediaType.APPLICATION_ATOM_XML})
