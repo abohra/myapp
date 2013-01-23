@@ -1,0 +1,54 @@
+/* 
+    Document   : newuser
+    Created on : Jan 13, 2013, 1:50:41 PM
+    Author     : AVINASH
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#mainContent{
+    width:870px;
+    height:600px;
+    display: block;
+    padding: 19px 38px;
+    padding-right: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    
+}
+
+.mainForm{
+    padding: 19px 38px;
+}
+.mainForm .mainFormBlock{
+    float:left;
+    width: 377px;
+}
+
+.mainFormBlock{
+    margin-left: 20px;
+}
+
+.inputLBLContainer{
+    margin:10px 0px;
+}
+
+.inputStateTxtBox,.inputCityTxtBox{
+    width:135px !important;
+    margin-right: 17px;
+    float:left;
+}
+
+.marginCreateBtn{
+    margin-top: 60px;
+    margin-left: 180px;
+}
+
+.dropdown{
+    
+}

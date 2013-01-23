@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+         <!-- Stylish Sheets Include Start -->
+        <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/common.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/newuser.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/header.css" type="text/css" rel="stylesheet" />
+        <!-- Stylish Sheets Include End -->
+    </head>
+    <body>
+        <header class="mainHeader">
+        </header>
+       <div id="pageContanier">
+            <header class="mainHeading">
+                <hgroup>
+                    <h1>Hi there. Welcome to Portal!</h1>
+                    <h2>Create new user</h2>
+                </hgroup>
+            </header>
+            <div id="mainContent">
+                <form class="mainForm" action="login.php">
+                    <section class="mainFormBlock">
+                        <section class="inputLBLContainer">
+                            <header>
+                                <label>First name</label>
+                            </header>
+                            <section classs="textbox">
+                                <input type="text" name="firstname" value="Firstname" class="watermarkText inputBox" id="firstname"/>
+                            </section>
+                        </section>
+                        <section class="inputLBLContainer">
+                            <header>
+                                <label>Last name</label>
+                            </header>
+                            <section>
+                                <input type="text" name="lastname" value="Lastname" class="watermarkText inputBox" id="lastname"/>
+                            </section>
+                        </section>
+                        <section class="inputLBLContainer">
+                            <header>
+                                <label>Email Address</label>
+                            </header>
+                            <section>
+                                <input type="text" name="emailaddress" value="Email address" class="watermarkText inputBox" id="emailaddress"/>
+                            </section>
+                        </section>
+                        <section class="inputLBLContainer">
+                            <header>
+                                <label>Mobile Number</label>
+                            </header>
+                            <section>
+                                <input type="text" name="mobilenumber" value="Mobile" class="watermarkText inputBox" id="mobilenumber"/>
+                            </section>
+                        </section>
+                        <section class="inputLBLContainer">
+                            <header>
+                                <label>Address</label>
+                            </header>
+                            <section>
+                                <input type="text" name="addressline1" value="Address line 1"  class="marginBottomTxtBox watermarkText inputBox" id="addressline1" />
+                            </section>
+                            <section>
+                                <input type="text" name="addressline2" value="Address line 2"  class="marginBottomTxtBox watermarkText inputBox" id="addressline2"/>
+                            </section>
+                            <section>
+                                <input type="text" name="city" value="City" class="marginBottomTxtBox inputCityTxtBox watermarkText inputBox" id="city" />
+                            </section>
+                            <section>
+                                <input type="text" name="state" value="State"  class="marginBottomTxtBox inputStateTxtBox watermarkText inputBox" id="state"/>
+                            </section>
+                            <section>
+                                <input type="text" name="pincode"  value="Pincode" class="marginBottomTxtBox watermarkText inputBox" id="pincode"/>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="mainFormBlock marginLeftOtherThanFirstBlock">
+                    </section>
+                    <div id="CreateAccountButton" class="nextStepButton registrationSprite marginCreateBtn">
+                        <span>Create New User</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- java script includes start-->
+        <script type="text/javascript" src="../static/js/jquery-1.9.0.js"></script> 
+        <script type="text/javascript" src="../static/js/common.js"></script>
+        <script type="text/javascript" src="../static/js/customer.js"></script> 
+        <!-- java script includes end-->
+    </body>
+</html>

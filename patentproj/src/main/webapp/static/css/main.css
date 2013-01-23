@@ -1,0 +1,62 @@
+/* 
+    Document   : common
+    Created on : Jan 13, 2013, 1:51:00 PM
+    Author     : AVINASH
+    Description:
+        Purpose of the stylesheet follows.
+*/
+html,body{
+    height:100%;
+}
+
+
+html, body, div, input, select, textarea, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, input, button, fieldset {
+    font-size: 100%;
+    font-family: 'open sans',"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body{
+    background-color: #E7E6E3;
+    overflow-y: scroll;
+    min-width: 1024px;
+    font-family: 'open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #444;
+
+}
+
+input[type="text"]:hover,input[type="text"]:focus,input[type="password"]:hover,input[type="password"]:focus ,.form input[type="password"]:hover, .form input[type="email"]:hover, .form textarea:hover, .form input[type="text"]:focus, .form input[type="password"]:focus, .form input[type="email"]:focus, .form textarea:focus{
+    -webkit-box-shadow: 0 0 5px #8AC2E0;
+    -moz-box-shadow: 0 0 5px #8ac2e0;
+    box-shadow: 0 0 5px #8AC2E0;
+    -webkit-box-shadow: 0 0 5px #8AC2E0;
+    -moz-box-shadow: 0 0 5px #8ac2e0;
+    box-shadow: 0 0 5px #8AC2E0;
+    outline: 1px solid #8AC2E0;
+    color:#444;
+}
+
+input[type="text"],input[type="password"]{
+    width:300px;
+    height: 30px;
+    border: 1px solid #B3B3B3;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+label, input, button, select, textarea {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'open sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.watermarkText{
+    color:#c8cccc;
+}

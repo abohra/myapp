@@ -1,0 +1,37 @@
+#mainContent{
+    width:500px;
+    height:300px;
+    display: block;
+    padding: 19px 38px;
+    padding-right: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+}
+
+.mainForm{
+    padding: 19px 38px;
+}
+
+.inputLBLContainer{
+    margin:10px 0px;
+}
+
+.marginLeftForRegister{
+    margin-left: 58px;
+    font-size: 12px;
+}
+
+.loginBTN{
+    float:right;
+    margin-right:135px;
+    margin-top: 12px;
+}
+
+.loginForm{
+    padding-left: 60px; 
+    width: 450px;
+}

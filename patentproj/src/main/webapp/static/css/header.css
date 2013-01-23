@@ -1,0 +1,11 @@
+.mainHeader{
+    width: 101%;
+    min-height: 38px;
+    color: #444;
+    background-color: saddleBrown;
+    margin: 0px;
+    padding: 0px;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+

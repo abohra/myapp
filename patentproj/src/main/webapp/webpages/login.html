@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login to portal</title>
+
+        <!-- Stylish Sheets Include Start -->
+        <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/common.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/login.css" rel="stylesheet" type="text/css">
+        <link href="../static/css/header.css" type="text/css" rel="stylesheet" />
+        <!-- Stylish Sheets Include End -->
+    </head>
+    <body>
+        <header class="mainHeader">
+        </header>
+        <div id="pageContanier">
+            <header class="mainHeading">
+                <hgroup>
+                    <h1>Login to Portal</h1>
+                    <h2>Automates Patent filling</h2>
+                </hgroup>
+            </header>
+            <div id="mainContent">
+                <form class="mainForm loginForm" action="newuser.php">
+                    <section class="inputLBLContainer">
+                        <header>
+                            <label>Username</label>
+                        </header>
+                        <section class="textbox">
+                            <input type="text" name="username" value="Username or email" class="watermarkText"/>
+                        </section>
+                    </section>
+                    <section class="inputLBLContainer">
+                        <header>
+                            <label>Password</label>
+                        </header>
+                        <section class="textbox">
+                            <input type="password" name="password" value="Password" class="watermarkText"/>
+                        </section>
+                    </section>
+                    <section class="loginBTN">
+                        <input type="submit" value="Login" class="btn btn-primary"/>
+                    </section>
+                </form>
+                <label class="marginLeftForRegister">Don't have an account? Register now</label>
+            </div>
+        </div>
+    </body>
+</html>
