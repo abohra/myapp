@@ -1,93 +1,184 @@
 package com.patent.bean;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.IOException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 @XmlRootElement (name = "customer")
 @Entity
 @Table(name = "customer")
 public class Customer {
 	private String customerId;
-	private String firstName;
-	private String lastName;
-	private String emailId;
-	private String addressLine1;
-	private String addressLine2;
+	private String firstname;
+	private String lastname;
+	private String emailaddress;
+	private String addressline1;
+	private String addressline2;
 	private String city;
 	private String state;
 	private String pincode;
-	private String phoneNumber;
+	private String mobilenumber;
+
+	public Customer(){
+
+	}
+
+	public Customer(String firstname, String lastname, String emailaddress,
+			String addressline1, String addressline2, String city,
+			String state, String pincode, String mobilenumber) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.emailaddress = emailaddress;
+		this.addressline1 = addressline1;
+		this.addressline2 = addressline2;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+		this.mobilenumber = mobilenumber;
+	}
+
+	public Customer(String jsonString){
+		Customer existingCustomer = CreateObjFromJSON(jsonString);
+		this.customerId = existingCustomer.customerId;
+		this.firstname = existingCustomer.firstname;
+		this.lastname = existingCustomer.lastname;
+		this.emailaddress = existingCustomer.emailaddress;
+		this.addressline1 = existingCustomer.addressline1;
+		this.addressline2 = existingCustomer.addressline2;
+		this.city = existingCustomer.city;
+		this.state = existingCustomer.state;
+		this.pincode = existingCustomer.pincode;
+		this.mobilenumber = existingCustomer.mobilenumber;
+	}
+
 	@Id
+	@Column
 	public String getCustomerId() {
 		return customerId;
 	}
+
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
+
 	@Column
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
+
 	@Column
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
+
 	@Column
-	public String getEmailId() {
-		return emailId;
+	public String getEmailaddress() {
+		return emailaddress;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+
+	public void setEmailaddress(String emailaddress) {
+		this.emailaddress = emailaddress;
 	}
+
 	@Column
-	public String getAddressLine1() {
-		return addressLine1;
+	public String getAddressline1() {
+		return addressline1;
 	}
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
+
+	public void setAddressline1(String addressline1) {
+		this.addressline1 = addressline1;
 	}
+
 	@Column
-	public String getAddressLine2() {
-		return addressLine2;
+	public String getAddressline2() {
+		return addressline2;
 	}
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
+
+	public void setAddressline2(String addressline2) {
+		this.addressline2 = addressline2;
 	}
+
 	@Column
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	@Column
 	public String getState() {
 		return state;
 	}
+
 	public void setState(String state) {
 		this.state = state;
 	}
+
 	@Column
 	public String getPincode() {
 		return pincode;
 	}
+
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
+
 	@Column
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getMobilenumber() {
+		return mobilenumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
+	}
+
+	public String toJSONString(){
+		ObjectMapper mapper = new ObjectMapper();
+		String objInJsonFormat = new String();
+
+		try {
+			objInJsonFormat = mapper.writeValueAsString(this);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return objInJsonFormat;
+	}
+	
+	public Customer CreateObjFromJSON(String jsonString) {
+		ObjectMapper mapper = new ObjectMapper();
+		Customer user = null;
+		try {
+			user = mapper.readValue(jsonString, Customer.class);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 }

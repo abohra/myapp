@@ -1,5 +1,7 @@
 package com.patent.db;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -9,17 +11,15 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 
 	private SessionFactory sessionFactory;
 	
-	public String CreateCustomer(Customer newCustomer) {
-		Session sess = null;
-		try {
-			sess = sessionFactory.openSession();
-			sess.beginTransaction();
-			sess.saveOrUpdate(newCustomer);
-
-			sess.getTransaction().commit();
-		} finally {
-			if (sess != null) {
-				sess.close();
+	public String CreateCustomer(Customer newCustomer) throws Exception {
+		Session session = null;
+		try{
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.saveOrUpdate(newCustomer);
+		}finally{
+			if(session != null){
+				session.close();
 			}
 		}
 		return newCustomer.getCustomerId();
@@ -58,8 +58,29 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 	}
 
 	public String EditCustomer(Customer updatedCustomer) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		try{
+			session = sessionFactory.openSession();
+			session.saveOrUpdate(updatedCustomer);
+		}finally{
+			if(session != null){
+				session.close();
+			}
+		}
+		return updatedCustomer.getCustomerId();
 	}
 
+	public List<Customer> ListOfCustomer() throws Exception {
+		Session session = null;
+		List<Customer> listOfCustomer = null;
+		try{
+			session = sessionFactory.openSession();
+			listOfCustomer = (List<Customer>)session.createQuery("FROM Customer").list();
+		} finally{
+			if(session != null){
+				session.close();
+			}
+		}
+		return listOfCustomer;
+	}
 }
