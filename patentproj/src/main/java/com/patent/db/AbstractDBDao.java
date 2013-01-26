@@ -1,6 +1,5 @@
 package com.patent.db;
 
-import com.patent.bean.DBBean;
 
 public interface AbstractDBDao {
 

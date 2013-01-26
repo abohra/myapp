@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.patent.bean.DBBean;
 
 @Component 
 public class TestDBDaoImpl { 
@@ -46,19 +45,22 @@ public class TestDBDaoImpl {
 
 	@Test
 	public void testDBcreateAndGet() throws Exception {
-		DBBean bean = new DBBean("1","hello",10);
-		String id = dao.createTest(bean);
-		Assert.assertNotNull(dao.getTestBean("1"));
-		Assert.assertEquals(id, "1", "invalid id");
+		DBBean bean1 = new DBBean("hello","amit");
+		String id1 = dao.createTest(bean1);
+		DBBean bean2 = new DBBean("hello","ankur");
+		String id2 = dao.createTest(bean2);
+		Assert.assertNotNull(dao.getTestBean(id1));
+		Assert.assertNotNull(dao.getTestBean(id2));
+
 	}
 
 	@Test
 	public void testDBDelete() throws Exception {
-		DBBean bean = new DBBean("1","hello",10);
+		DBBean bean = new DBBean("hello","amit");
 		String id = dao.createTest(bean);
 		Assert.assertNotNull(dao.getTestBean(id));
 		dao.deleteTest(id);
-		Assert.assertNull(dao.getTestBean("1"));
+		Assert.assertNull(dao.getTestBean(id));
 	}
 
 }

@@ -14,17 +14,16 @@ import javax.persistence.Table;
 
 public class DBBean implements Serializable {
 	private String id;
-	private String flag;
-	private int value;
+	private String v1;
+	private String v2;
+
 
 	public DBBean() { 
 
 	}
-
-	public DBBean(String id, String flag, int count){
-		this.id = id;
-		this.flag = flag;
-		this.value =count;
+	public DBBean(String val1,String val2) {
+		this.v1= val1;
+		this.v2=val2;
 	}
 
 	@Id
@@ -34,21 +33,24 @@ public class DBBean implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	@Column
-	public int getValue() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
 
 	@Column
-	public String getFlag() {
-		return flag;
+	public String getV1() {
+		return v1;
 	}
-	public void setFlag(String flag) {
-		this.flag = flag;
+
+	public void setV1(String v1) {
+		this.v1 = v1;
 	}
+
+	@Column
+	public String getV2() {
+		return v2;
+	}
+
+	public void setV2(String v2) {
+		this.v2 = v2;
+	}
+
 }
 

@@ -3,13 +3,16 @@ package com.patent.db;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.patent.bean.DBBean;
 
 public class DBDaoImpl implements AbstractDBDao {
+	
+	private static int counter = 1;
 
 	private SessionFactory sessionFactory;
 
 	public String createTest(DBBean bean) throws Exception {
+		String id = generateId();
+		bean.setId(id);
 		Session sess = null;
 		try {
 			sess = sessionFactory.openSession();
@@ -25,6 +28,10 @@ public class DBDaoImpl implements AbstractDBDao {
 		return bean.getId();
 	}
  
+	private String generateId() {
+		return String.valueOf(counter++);
+	}
+
 	public void deleteTest(String id) throws Exception {
 		Session session = null;
 		try {
