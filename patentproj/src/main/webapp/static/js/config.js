@@ -23,6 +23,8 @@ config["appName"] = "";
 config[""]="";
 
 //URLs
+
+var RestServiceURL = new Array();
 var basURLCustomer = "baseURLCustomer";
 
 var newCustomer = "newCustomer";
@@ -32,12 +34,12 @@ var getCustomer = "getCustomer";
 var getCustomerList = "getCustomerList";
 
 
-config[basURLCustomer]="http://localhost:8080/patent/rest/customer/";
-config[newCustomer] =config[basURLCustomer]+method[newCustomer];
-config[editCustomer] = config[basURLCustomer]+method[editCustomer];
-config[deleteCustomer] = config[basURLCustomer]+method[deleteCustomer];
-config[getCustomer] = config[basURLCustomer]+method[getCustomer];
-config[getCustomerList] = config[basURLCustomer]+method[getCustomerList];
+RestServiceURL[basURLCustomer]="http://localhost:8080/patent/rest/customer/";
+RestServiceURL[newCustomer] =config[basURLCustomer]+method[newCustomer];
+RestServiceURL[editCustomer] = config[basURLCustomer]+method[editCustomer];
+RestServiceURL[deleteCustomer] = config[basURLCustomer]+method[deleteCustomer];
+RestServiceURL[getCustomer] = config[basURLCustomer]+method[getCustomer];
+RestServiceURL[getCustomerList] = config[basURLCustomer]+method[getCustomerList];
 
 //==================================================================================================================================================
 
@@ -113,4 +115,9 @@ regex[ids[mobilenumber]]="";
 regex[ids[pincode]]="";
 regex[text]="";
 
+var NotificationMessages = new Array();
+var success = "success";
+var failed = "failed";
+NotificationMessages[newCustomer+success] = "Added customer successfully";
+NotificationMessages[newCustomer+failed] = "Added customer successfully";
 

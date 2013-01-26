@@ -66,3 +66,7 @@ function AlertBox(txt){
 function SetFormAttributes(formId,method,url){
     $('#'+formId).attr({"action":url,"method":method});
 }
+
+function ShowNotification(msg){
+    alert(msg);
+}
