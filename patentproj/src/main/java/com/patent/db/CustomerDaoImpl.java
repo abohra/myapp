@@ -11,6 +11,14 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 
 	private SessionFactory sessionFactory;
 	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	public String CreateCustomer(Customer newCustomer) throws Exception {
 		String customerId = generateCustomerId(newCustomer);
 		newCustomer.setCustomerId(customerId);
