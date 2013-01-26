@@ -7,24 +7,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class DBManager {
 
-@Autowired
-@Qualifier("testDbDao")
-private AbstractDBDao dao;
+	@Autowired
+	@Qualifier("testDbDao")
+	private AbstractDBDao dao;
 
-public AbstractDBDao getDao() {
-return dao;
-}
+	public AbstractDBDao getDao() {
+		return dao;
+	}
 
-public void setDao(AbstractDBDao dao) {
-this.dao = dao;
-}
+	public void setDao(AbstractDBDao dao) {
+		this.dao = dao;
+	}
 
-public String createTest(DBBean bean) throws Exception {
-return dao.createTest(bean);
-}
+	public String createTest(DBBean bean) throws Exception {
+		return dao.createTest(bean);
+	}
 
-public void deleteTest(String id)throws Exception {
-dao.deleteTest(id);
-}
+	public void deleteTest(String id)throws Exception {
+		dao.deleteTest(id);
+	}
 
-}
+} 

@@ -26,4 +26,4 @@ public class TestResource {
 		return bean;
 	}
 
-}
+} 

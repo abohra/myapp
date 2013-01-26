@@ -8,7 +8,7 @@
 
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.myapp" />
+	<context:component-scan base-package="com.patent" />
 
 	<context:property-placeholder location="classpath:/env.properties" />
 	
@@ -31,7 +31,7 @@
 	<bean id="dbSessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dbDataSource" />
-		<property name="packagesToScan" value="com.myapp.db" />
+		<property name="packagesToScan" value="com.patent.db" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
@@ -41,7 +41,7 @@
 		</property>
 	</bean>
 	
-	<bean id="testDbDao" class="com.myapp.db.TestDBDaoImpl">
+	<bean id="testDbDao" class="com.patent.db.TestDBDaoImpl">
 		<property name="sessionFactory" ref="dbSessionFactory" />
 	</bean>
 </beans>

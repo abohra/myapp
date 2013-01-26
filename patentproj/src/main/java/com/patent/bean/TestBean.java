@@ -21,4 +21,4 @@ public class TestBean {
 		this.object2 = object2;
 	}
 
-}
+} 

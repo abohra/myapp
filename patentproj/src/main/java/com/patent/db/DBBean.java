@@ -17,7 +17,7 @@ public class DBBean implements Serializable {
 	private String flag;
 	private int value;
 
-	public DBBean() {
+	public DBBean() { 
 
 	}
 

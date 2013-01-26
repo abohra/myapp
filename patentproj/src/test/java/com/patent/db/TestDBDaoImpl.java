@@ -40,7 +40,7 @@ public class TestDBDaoImpl {
 	@BeforeClass
 	public void setupClass() throws Exception {
 
-	}
+	} 
 
 	@Test
 	public void testDBcreateAndGet() throws Exception {

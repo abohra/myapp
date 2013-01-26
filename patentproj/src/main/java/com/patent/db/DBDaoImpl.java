@@ -22,7 +22,7 @@ public class DBDaoImpl implements AbstractDBDao {
 		}
 		return bean.getId();
 	}
-
+ 
 	public void deleteTest(String id) throws Exception {
 		Session session = null;
 		try {
