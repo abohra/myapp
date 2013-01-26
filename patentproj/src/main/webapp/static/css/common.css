@@ -96,3 +96,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
+
+.hide{
+    display:none;
+}

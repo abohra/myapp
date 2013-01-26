@@ -60,3 +60,47 @@ label{
 .watermarkText{
     color:#c8cccc;
 }
+
+.requiredField{
+    background-color: #e25a2d;
+    background-image: -moz-linear-gradient(top, #f26531 0%, #c94928 100%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f26531), to(#c94928));
+    background-image: -webkit-linear-gradient(top, #f26531 0%, #c94928 100%);
+    background-image: -o-linear-gradient(top, #f26531 0%, #c94928 100%);
+    background-image: linear-gradient(to bottom, #f26531 0%, #c94928 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff26531', endColorstr='#ffc94928', GradientType=0);
+    color: #fafafa;
+    padding: 3px 10px;
+    font-size: 11px;
+    line-height: normal;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-color: #c94928;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    float:right;
+    margin-right: 75px;
+    margin-top: -15px;
+}
+
+.textbox{
+    float:left;
+}
+
+.requiredField2{
+    color: white;
+    background-color: crimson;
+    min-height: 12px;
+    border-radius: 2px;
+    margin-top: -5px;
+    float:right;
+    margin-right: 65px;
+    margin-top: -15px;
+    z-index: 100;
+}

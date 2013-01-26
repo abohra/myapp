@@ -2,6 +2,8 @@ var page = "customer";
 
 $(document).ready(function(){
     
+    init();
+    
     $('.inputBox').focusin(function(){
         var idOfFocusedElement = $(this).attr('id');
         ClearTextBoxWaterMarkOnFocus(idOfFocusedElement);
@@ -13,22 +15,27 @@ $(document).ready(function(){
     });
    
     $('#CreateAccountButton').click(function(){
-        var TestCustomerJSONObject= {
-            "firstname":"John",
-            "lastname":"Johnson",
-            "emailaddress":"John@Johnson.com",
-            "addressline1":"Oslo West 555", 
-            "addressline2":"Kazipet",
-            "city":"warangal",
-            "state":"andhra pradesh",
-            "pincode":"506003",
-            "mobile":"555 1234567"
-        };
-        ClearWaterMarkText();
-        FillTextBoxWithCustomerData(TestCustomerJSONObject);
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var emailaddress = $("#emailaddress").val();
+        var mobilenumber = $("#mobilenumber").val();
+        var addressline1 = $("#addressline1").val();
+        var addressline2 = $("#addressline2").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var pincode = $("#pincode").val();
+        
+        ValidateInputs();
     });
+    
+  
 });
 
+function init(){
+    SetWaterMarks();
+    SetFieldsToBeValidated()
+    //SetFormAttributes("newCustomerForm",config["newCustomer"],"POST");
+}
 
 function FillTextBoxWithCustomerData(customerJSON){
       $('#firstname').val(customerJSON.firstname);
@@ -40,4 +47,46 @@ function FillTextBoxWithCustomerData(customerJSON){
       $('#state').val(customerJSON.state);
       $('#pincode').val(customerJSON.pincode);
       $('#mobilenumber').val(customerJSON.mobile);
+}
+
+function SetWaterMarks(){
+    $(".inputBox").each(function(){
+        var id = $(this).attr("id");
+        $("#"+id).val(watermarkText[id]);
+    });
+}
+
+function SetFieldsToBeValidated(){
+    SetRequiredFields();
+    SetEmailFields();
+    SetMobileFields();
+    SetPincodeFields();
+}
+
+function SetRequiredFields(){
+    var requiredFields = new Array(firstname,lastname,mobilenumber,addressline1,city,state,pincode,emailaddress);
+    for(field in requiredFields){
+        $("#"+ids[requiredFields[field]]).addClass(requiredFieldClass);
+    }
+}
+
+function SetEmailFields(){
+    var emailFields = new Array(emailaddress);
+    for(field in emailFields){
+        $("#"+ids[emailFields[field]]).addClass(emailFieldClass);
+    }
+}
+
+function SetMobileFields(){
+    var mobileFields = new Array(mobilenumber);
+    for(field in mobileFields){
+        $("#"+ids[mobileFields[field]]).addClass(mobileFieldClass);
+    }
+}
+
+function SetPincodeFields(){
+    var pincodeFields = new Array(pincode);
+    for(field in pincodeFields){
+        $("#"+ids[pincodeFields[field]]).addClass(pincodeFieldClass);
+    }
 }

@@ -62,3 +62,7 @@ function ChangeText(id,textValue){
 function AlertBox(txt){
     alert(txt);
 }
+
+function SetFormAttributes(formId,method,url){
+    $('#'+formId).attr({"action":url,"method":method});
+}

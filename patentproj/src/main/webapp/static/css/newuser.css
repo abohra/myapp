@@ -36,6 +36,7 @@ root {
 
 .inputLBLContainer{
     margin:10px 0px;
+    float:left;
 }
 
 .inputStateTxtBox,.inputCityTxtBox{

@@ -21,59 +21,67 @@
                 </hgroup>
             </header>
             <div id="mainContent">
-                <form class="mainForm" action="login.php">
+                <form id="newCustomerForm" class="mainForm">
                     <section class="mainFormBlock">
                         <section class="inputLBLContainer">
                             <header>
                                 <label>First name</label>
                             </header>
-                            <section classs="textbox">
-                                <input type="text" name="firstname" value="Firstname" class="watermarkText inputBox" id="firstname"/>
+                            <section class="textbox">
+                                <input type="text" name="firstname" class="watermarkText inputBox" id="firstname"/>
                             </section>
+                            <span class="requiredField hide">First name is required</span>
                         </section>
                         <section class="inputLBLContainer">
                             <header>
                                 <label>Last name</label>
                             </header>
-                            <section>
-                                <input type="text" name="lastname" value="Lastname" class="watermarkText inputBox" id="lastname"/>
+                            <section class="textbox">
+                                <input type="text" name="lastname" class="watermarkText inputBox" id="lastname"/>
                             </section>
+                            <span class="requiredField hide">Last name is required</span>
                         </section>
                         <section class="inputLBLContainer">
                             <header>
                                 <label>Email Address</label>
                             </header>
-                            <section>
-                                <input type="text" name="emailaddress" value="Email address" class="watermarkText inputBox" id="emailaddress"/>
+                            <section class="textbox">
+                                <input type="text" name="emailaddress" class="watermarkText inputBox" id="emailaddress"/>
                             </section>
+                            <span class="requiredField hide">Email is required</span>
                         </section>
                         <section class="inputLBLContainer">
                             <header>
                                 <label>Mobile Number</label>
                             </header>
-                            <section>
-                                <input type="text" name="mobilenumber" value="Mobile" class="watermarkText inputBox" id="mobilenumber"/>
+                            <section class="textbox">
+                                <input type="text" name="mobilenumber" class="watermarkText inputBox" id="mobilenumber"/>
                             </section>
+                            <span class="requiredField hide">Mobile number is required</span>
                         </section>
                         <section class="inputLBLContainer">
                             <header>
                                 <label>Address</label>
                             </header>
-                            <section>
-                                <input type="text" name="addressline1" value="Address line 1"  class="marginBottomTxtBox watermarkText inputBox" id="addressline1" />
+                            <section class="textbox">
+                                <input type="text" name="addressline1" class="marginBottomTxtBox watermarkText inputBox" id="addressline1" />
                             </section>
-                            <section>
-                                <input type="text" name="addressline2" value="Address line 2"  class="marginBottomTxtBox watermarkText inputBox" id="addressline2"/>
+                            <span class="requiredField hide">Address line1 cant be empty</span>
+                            <section class="textbox">
+                                <input type="text" name="addressline2" class="marginBottomTxtBox watermarkText inputBox" id="addressline2"/>
                             </section>
-                            <section>
-                                <input type="text" name="city" value="City" class="marginBottomTxtBox inputCityTxtBox watermarkText inputBox" id="city" />
+                            <section class="textbox">
+                                <input type="text" name="city" class="marginBottomTxtBox inputCityTxtBox watermarkText inputBox" id="city" />
                             </section>
-                            <section>
-                                <input type="text" name="state" value="State"  class="marginBottomTxtBox inputStateTxtBox watermarkText inputBox" id="state"/>
+                            <span class="requiredField hide">City cant be empty</span>
+                            <section class="textbox">
+                                <input type="text" name="state" class="marginBottomTxtBox inputStateTxtBox watermarkText inputBox" id="state"/>
                             </section>
-                            <section>
-                                <input type="text" name="pincode"  value="Pincode" class="marginBottomTxtBox watermarkText inputBox" id="pincode"/>
+                            <span class="requiredField hide">State cant be empty</span>
+                            <section class="textbox">
+                                <input type="text" name="pincode" class="marginBottomTxtBox watermarkText inputBox" id="pincode"/>
                             </section>
+                            <span class="requiredField hide">Pincode cant be empty</span>
                         </section>
                     </section>
                     <section class="mainFormBlock marginLeftOtherThanFirstBlock">
@@ -89,6 +97,9 @@
         <script type="text/javascript" src="../static/js/jquery-1.9.0.js"></script> 
         <script type="text/javascript" src="../static/js/common.js"></script>
         <script type="text/javascript" src="../static/js/customer.js"></script> 
+        <script type="text/javascript" src="../static/js/config.js"></script> 
+        <script type="text/javascript" src="../static/js/validationUtils.js"></script> 
+        
         <!-- java script includes end-->
     </body>
 </html>
