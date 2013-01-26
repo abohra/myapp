@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "user")
 public class User {
-	private String userId;
+	private String userId; 
 	private String fName;
 	private String lName;
 	private String emailAddress;
