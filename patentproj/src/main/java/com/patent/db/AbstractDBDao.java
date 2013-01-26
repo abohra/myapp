@@ -1,5 +1,7 @@
 package com.patent.db;
 
+import com.patent.bean.DBBean;
+
 public interface AbstractDBDao {
 
 	public String createTest(DBBean bean) throws Exception;
