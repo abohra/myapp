@@ -12,6 +12,8 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 	private SessionFactory sessionFactory;
 	
 	public String CreateCustomer(Customer newCustomer) throws Exception {
+		String customerId = generateCustomerId(newCustomer);
+		newCustomer.setCustomerId(customerId);
 		Session session = null;
 		try{
 			session = sessionFactory.openSession();
@@ -23,6 +25,11 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 			}
 		}
 		return newCustomer.getCustomerId();
+	}
+
+	private String generateCustomerId(Customer newCustomer) {
+		//Avinash to add logic here
+		return null;
 	}
 
 	public int DeleteCustomer(String id) throws Exception {
