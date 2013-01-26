@@ -3,6 +3,8 @@ package com.patent.db;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.patent.bean.DBBean;
+
 public class DBDaoImpl implements AbstractDBDao {
 
 	private SessionFactory sessionFactory;
