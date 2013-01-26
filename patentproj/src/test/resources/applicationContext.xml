@@ -11,7 +11,7 @@
 	<context:component-scan base-package="com.patent" />
 
 	<context:property-placeholder location="classpath:/env.properties" />
-	
+
 	<bean id="dbDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -23,7 +23,7 @@
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="1" />
 		<property name="maxIdle" value="2" />
-		<property name="maxWait" value="300000" /> 
+		<property name="maxWait" value="300000" />
 		<property name="testOnBorrow" value="true" />
 		<property name="timeBetweenEvictionRunsMillis" value="350000" />
 	</bean>
@@ -39,9 +39,13 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-	</bean> 
-	
+	</bean>
+
 	<bean id="testDbDao" class="com.patent.db.DBDaoImpl">
+		<property name="sessionFactory" ref="dbSessionFactory" />
+	</bean>
+
+	<bean id="customerDao" class="com.patent.db.CustomerDaoImpl">
 		<property name="sessionFactory" ref="dbSessionFactory" />
 	</bean>
 </beans>

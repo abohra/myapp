@@ -8,14 +8,27 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import com.patent.bean.Customer;
 import com.patent.db.CustomerDaoImpl;
 
-
+@Component
 @Path("/customer")
 public class CustomerResource {
 
-	CustomerDaoImpl customerDao = new CustomerDaoImpl();
+	private CustomerDaoImpl customerDao;
+
+	public CustomerDaoImpl getCustomerDao() {
+		return customerDao;
+	}
+
+	@Autowired
+	public void setCustomerDao(@Qualifier("customerDao") CustomerDaoImpl customerDao) {
+		this.customerDao = customerDao;
+	}
 
 	@POST
 	@Path("/newCustomer")

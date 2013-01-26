@@ -44,4 +44,7 @@
 	<bean id="testDbDao" class="com.patent.db.TestDBDaoImpl">
 		<property name="sessionFactory" ref="dbSessionFactory" />
 	</bean>
+	<bean id="customerDao" class="com.patent.db.CustomerDaoImpl">
+		<property name="sessionFactory" ref="dbSessionFactory" />
+	</bean>
 </beans>
