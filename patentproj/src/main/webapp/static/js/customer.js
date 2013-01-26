@@ -15,20 +15,17 @@ $(document).ready(function(){
     });
    
     $('#CreateAccountButton').click(function(){
-        var firstname = $("#firstname").val();
-        var lastname = $("#lastname").val();
-        var emailaddress = $("#emailaddress").val();
-        var mobilenumber = $("#mobilenumber").val();
-        var addressline1 = $("#addressline1").val();
-        var addressline2 = $("#addressline2").val();
-        var city = $("#city").val();
-        var state = $("#state").val();
-        var pincode = $("#pincode").val();
-        
-        ValidateInputs();
+        if(false == ValidateInputs()){
+            return false;
+        }
+        $.post(RestServiceURL[newCustomer], data, function(data,status){
+            if(status == "success"){
+                ShowNotification(NotificationMessages[newCustomer+success]);
+            }else{
+                ShowNotification(NotificationMessages[newCustomer+failed]);
+            }
+        });
     });
-    
-  
 });
 
 function init(){
@@ -90,3 +87,4 @@ function SetPincodeFields(){
         $("#"+ids[pincodeFields[field]]).addClass(pincodeFieldClass);
     }
 }
+
