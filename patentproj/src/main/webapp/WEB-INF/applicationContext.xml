@@ -11,7 +11,7 @@
 	<context:component-scan base-package="com.patent" />
 
 	<context:property-placeholder location="classpath:/env.properties" />
-	
+
 	<bean id="dbDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
@@ -31,7 +31,7 @@
 	<bean id="dbSessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dbDataSource" />
-		<property name="packagesToScan" value="com.patent" />
+		<property name="packagesToScan" value="com.patent.db" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
@@ -40,10 +40,11 @@
 			</props>
 		</property>
 	</bean>
-	
-	<bean id="testDbDao" class="com.patent.db.TestDBDaoImpl">
+
+	<bean id="testDbDao" class="com.patent.db.DBDaoImpl">
 		<property name="sessionFactory" ref="dbSessionFactory" />
 	</bean>
+
 	<bean id="customerDao" class="com.patent.db.CustomerDaoImpl">
 		<property name="sessionFactory" ref="dbSessionFactory" />
 	</bean>
