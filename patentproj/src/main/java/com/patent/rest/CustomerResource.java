@@ -4,7 +4,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +32,10 @@ public class CustomerResource {
 	}
 
 	@POST
-	@Path("/newCustomer")
+	@Path("/create")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public String createCustomer(CustomerBean customer){
-	    CustomerDaoBean newCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
+		CustomerDaoBean newCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
 		String customerId = null;
 		try {
 			customerId = customerDao.CreateCustomer(newCustomerDBBean);
@@ -44,9 +44,9 @@ public class CustomerResource {
 		}
 		return customerId;
 	}
-	
+
 	@POST
-	@Path("/editCustomer")
+	@Path("/update")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public String editCustomer(CustomerBean customer){
 		CustomerDaoBean updatedCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
@@ -58,15 +58,14 @@ public class CustomerResource {
 		}
 		return customerId;
 	}
-	
+
 	@GET
-	@Path("/getCustomer")
-	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	public CustomerBean getCustomer(String customerId) {
+	@Path("/fetch/{id}")
+	public CustomerBean getCustomer(@PathParam("id")String id) {
 		CustomerDaoBean customerDBDetailsBean = null;
-		 CustomerBean customerDetailsBean = null;
+		CustomerBean customerDetailsBean = null;
 		try {
-			customerDBDetailsBean = customerDao.GetCustomer(customerId);
+			customerDBDetailsBean = customerDao.GetCustomer(id);
 			customerDetailsBean = ConverterUtility.getCustomerBeanFromCustomerDaoBean(customerDBDetailsBean);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,15 +74,12 @@ public class CustomerResource {
 	}
 
 	@GET
-	@Path("/deleteCustomer")
-	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	public int deleteCustomer(String customerId) {
-		int numRowsDeleted = 0;
+	@Path("/delete/{id}")
+	public void deleteCustomer(@PathParam("id")String id) {
 		try {
-			numRowsDeleted = customerDao.DeleteCustomer(customerId);
+			customerDao.DeleteCustomer(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return numRowsDeleted;
 	}
 }

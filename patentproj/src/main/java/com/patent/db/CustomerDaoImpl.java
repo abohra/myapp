@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.patent.bean.CustomerBean;
 
 public class CustomerDaoImpl implements AbstractCustomerDao{
 
@@ -28,6 +27,8 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			session.saveOrUpdate(newCustomer);
+			session.getTransaction().commit();
+
 		}finally{
 			if(session != null){
 				session.close();
@@ -65,7 +66,7 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		Session session = null;
 		try {
 			session = sessionFactory.openSession();
-			return (CustomerDaoBean) session.get(CustomerBean.class,id);
+			return (CustomerDaoBean) session.get(CustomerDaoBean.class,id);
 		} finally {
 			if (session != null) {
 				session.close();
@@ -78,6 +79,8 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		try{
 			session = sessionFactory.openSession();
 			session.saveOrUpdate(updatedCustomer);
+			session.getTransaction().commit();
+
 		}finally{
 			if(session != null){
 				session.close();
