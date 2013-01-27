@@ -1,7 +1,6 @@
 package com.patent.rest;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.patent.bean.Customer;
+import com.patent.bean.ConverterUtility;
+import com.patent.bean.CustomerBean;
+import com.patent.db.CustomerDaoBean;
 import com.patent.db.CustomerDaoImpl;
 
 @Component
@@ -32,12 +33,12 @@ public class CustomerResource {
 
 	@POST
 	@Path("/newCustomer")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String createCustomer(String jsonCustomer){
-		Customer newCustomer = new Customer(jsonCustomer);
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public String createCustomer(CustomerBean customer){
+	    CustomerDaoBean newCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
 		String customerId = null;
 		try {
-			customerId = customerDao.CreateCustomer(newCustomer);
+			customerId = customerDao.CreateCustomer(newCustomerDBBean);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,12 +47,12 @@ public class CustomerResource {
 	
 	@POST
 	@Path("/editCustomer")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String editCustomer(String jsonCustomer){
-		Customer updatedCustomer = new Customer(jsonCustomer);
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public String editCustomer(CustomerBean customer){
+		CustomerDaoBean updatedCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
 		String customerId = null;
 		try {
-			customerId = customerDao.EditCustomer(updatedCustomer);
+			customerId = customerDao.UpdateCustomer(updatedCustomerDBBean);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,21 +61,23 @@ public class CustomerResource {
 	
 	@GET
 	@Path("/getCustomer")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Customer getCustomer(@FormParam("customerId") String customerId) {
-		Customer customerDetails = null;
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public CustomerBean getCustomer(String customerId) {
+		CustomerDaoBean customerDBDetailsBean = null;
+		 CustomerBean customerDetailsBean = null;
 		try {
-			customerDetails = customerDao.GetCustomer(customerId);
+			customerDBDetailsBean = customerDao.GetCustomer(customerId);
+			customerDetailsBean = ConverterUtility.getCustomerBeanFromCustomerDaoBean(customerDBDetailsBean);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return customerDetails;
+		return customerDetailsBean;
 	}
 
 	@GET
 	@Path("/deleteCustomer")
-	@Produces(MediaType.APPLICATION_JSON)
-	public int deleteCustomer(@FormParam("customerId") String customerId) {
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public int deleteCustomer(String customerId) {
 		int numRowsDeleted = 0;
 		try {
 			numRowsDeleted = customerDao.DeleteCustomer(customerId);

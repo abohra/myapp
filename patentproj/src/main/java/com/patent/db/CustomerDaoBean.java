@@ -1,21 +1,36 @@
-package com.patent.bean;
+package com.patent.db;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement (name = "customer")
+import org.hibernate.annotations.Entity;
+
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table (name = "customer")
+public class CustomerDaoBean implements Serializable {
 	private String customerId;
 	private String customerName;
 	private String emailAddress;
 	private String contactNumber;
 	private String address;
+	
+	public CustomerDaoBean(){
+		
+	}
+	
+	public CustomerDaoBean(String customerName, String emailAddress,
+			String contactNumber, String address) {
+		super();
+		this.customerName = customerName;
+		this.emailAddress = emailAddress;
+		this.contactNumber = contactNumber;
+		this.address = address;
+	}
 
-	@Column
+	@Id
 	public String getCustomerId() {
 		return customerId;
 	}
@@ -50,5 +65,6 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
+	
+	
 }

@@ -1,11 +1,12 @@
 package com.patent.db;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.patent.bean.Customer;
+import com.patent.bean.CustomerBean;
 
 public class CustomerDaoImpl implements AbstractCustomerDao{
 
@@ -19,8 +20,8 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		this.sessionFactory = sessionFactory;
 	}
 
-	public String CreateCustomer(Customer newCustomer) throws Exception {
-		String customerId = generateCustomerId(newCustomer);
+	public String CreateCustomer(CustomerDaoBean newCustomer) throws Exception {
+		String customerId = generateCustomerId();
 		newCustomer.setCustomerId(customerId);
 		Session session = null;
 		try{
@@ -35,9 +36,9 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		return newCustomer.getCustomerId();
 	}
 
-	private String generateCustomerId(Customer newCustomer) {
-		//Avinash to add logic here
-		return null;
+	private String generateCustomerId() {
+		UUID uniqueKey = UUID.randomUUID();
+		return uniqueKey.toString();
 	}
 
 	public int DeleteCustomer(String id) throws Exception {
@@ -60,11 +61,11 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		return numRowsDeleted;
 	}
 
-	public Customer GetCustomer(String id) throws Exception {
+	public CustomerDaoBean GetCustomer(String id) throws Exception {
 		Session session = null;
 		try {
 			session = sessionFactory.openSession();
-			return (Customer) session.get(Customer.class,id);
+			return (CustomerDaoBean) session.get(CustomerBean.class,id);
 		} finally {
 			if (session != null) {
 				session.close();
@@ -72,7 +73,7 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		}
 	}
 
-	public String EditCustomer(Customer updatedCustomer) throws Exception {
+	public String UpdateCustomer(CustomerDaoBean updatedCustomer) throws Exception {
 		Session session = null;
 		try{
 			session = sessionFactory.openSession();
@@ -85,12 +86,12 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		return updatedCustomer.getCustomerId();
 	}
 
-	public List<Customer> ListOfCustomer() throws Exception {
+	public List<CustomerDaoBean> ListOfCustomer() throws Exception {
 		Session session = null;
-		List<Customer> listOfCustomer = null;
+		List<CustomerDaoBean> listOfCustomer = null;
 		try{
 			session = sessionFactory.openSession();
-			listOfCustomer = (List<Customer>)session.createQuery("FROM Customer").list();
+			listOfCustomer = (List<CustomerDaoBean>)session.createQuery("FROM Customer").list();
 		} finally{
 			if(session != null){
 				session.close();

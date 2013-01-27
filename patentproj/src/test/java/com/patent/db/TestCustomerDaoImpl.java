@@ -11,12 +11,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
 @Component 
-public class TestDBDaoImpl { 
-
+public class TestCustomerDaoImpl {
 	AbstractXmlApplicationContext context;
-	static protected AbstractDBDao dao;
+	static protected AbstractCustomerDao customerDao;
 
 	@BeforeMethod
 	public void setup() throws Exception {
@@ -28,13 +26,13 @@ public class TestDBDaoImpl {
 		context.destroy();
 	}
 
-	public static AbstractDBDao getDao() {
-		return dao;
+	public static AbstractCustomerDao getDao() {
+		return customerDao;
 	}
 
 	@Autowired
-	public  void setDao(@Qualifier("testDbDao") AbstractDBDao dao) {
-		TestDBDaoImpl.dao= dao;
+	public  void setDao(@Qualifier("customerDao") AbstractCustomerDao dao) {
+		TestCustomerDaoImpl.customerDao= dao;
 	}
 
 
@@ -42,25 +40,21 @@ public class TestDBDaoImpl {
 	public void setupClass() throws Exception {
 
 	} 
-
 	@Test
-	public void testDBcreateAndGet() throws Exception {
-		DBBean bean1 = new DBBean("hello","amit");
-		String id1 = dao.createTest(bean1);
-		DBBean bean2 = new DBBean("hello","ankur");
-		String id2 = dao.createTest(bean2);
-		Assert.assertNotNull(dao.getTestBean(id1));
-		Assert.assertNotNull(dao.getTestBean(id2));
-
+	public void customerDBcreateAndGetCustomer() throws Exception {
+		Assert.assertNotNull(customerDao);
+		CustomerDaoBean beanCustomer1 = new CustomerDaoBean("test","test@test.com","999999","hyd");
+		System.out.println(beanCustomer1.getCustomerName());
+		String id1 = customerDao.CreateCustomer(beanCustomer1);
+		Assert.assertNotNull(id1);
 	}
 
-	@Test
-	public void testDBDelete() throws Exception {
-		DBBean bean = new DBBean("hello","amit");
-		String id = dao.createTest(bean);
-		Assert.assertNotNull(dao.getTestBean(id));
-		dao.deleteTest(id);
-		Assert.assertNull(dao.getTestBean(id));
-	}
-
+//	@Test
+//	public void testDBDelete() throws Exception {
+//		DBBean bean = new DBBean("hello","amit");
+//		String id = dao.createTest(bean);
+//		Assert.assertNotNull(dao.getTestBean(id));
+//		dao.deleteTest(id);
+//		Assert.assertNull(dao.getTestBean(id));
+//	}
 }
