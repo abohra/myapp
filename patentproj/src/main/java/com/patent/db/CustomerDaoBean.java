@@ -1,16 +1,14 @@
 package com.patent.db;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Entity;
 
 @Entity
 @Table (name = "customer")
-public class CustomerDaoBean implements Serializable {
+public class CustomerDaoBean {
 	private String customerId;
 	private String customerName;
 	private String emailAddress;
