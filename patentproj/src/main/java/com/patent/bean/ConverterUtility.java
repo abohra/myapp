@@ -2,6 +2,7 @@ package com.patent.bean;
 
 import com.patent.db.CustomerDaoBean;
 import com.patent.db.DBBean;
+import com.patent.db.User;
 
 public class ConverterUtility {
 
@@ -38,4 +39,30 @@ public class ConverterUtility {
 		customerBean.setEmailAddress(customerDaoBean.getEmailAddress());
 		return customerBean;
 	}
+	public static User getUserFromUserBean(UserBean userBean)
+	{
+		User user = new User();
+		user.setUserId(userBean.getUserId());
+		user.setfName(userBean.getfName());
+		user.setlName(userBean.getlName());
+		user.setContactNumber(userBean.getContactNumber());
+		user.setEmailAddress(userBean.getEmailAddress());
+		user.setAddress(userBean.getAddress());
+		user.setRole(userBean.getRole());
+		return user;
+	}
+	
+	public static UserBean getUserBeanFromUser(User user)
+	{
+		UserBean userBean = new UserBean();
+		userBean.setUserId(user.getUserId());
+		userBean.setfName(user.getfName());
+		userBean.setlName(user.getlName());
+		userBean.setContactNumber(user.getContactNumber());
+		userBean.setEmailAddress(user.getEmailAddress());
+		userBean.setAddress(user.getAddress());
+		userBean.setRole(user.getRole());
+		return userBean;
+	}
+
 }
