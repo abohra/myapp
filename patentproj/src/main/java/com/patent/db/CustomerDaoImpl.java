@@ -42,9 +42,9 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		return uniqueKey.toString();
 	}
 
-	public int DeleteCustomer(String id) throws Exception {
+	public String DeleteCustomer(String id) throws Exception {
 		Session session = null;
-		int numRowsDeleted=0;
+		Integer numRowsDeleted=0;
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
@@ -59,7 +59,7 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 				session.close();
 			}
 		}
-		return numRowsDeleted;
+		return numRowsDeleted.toString();
 	}
 
 	public CustomerDaoBean GetCustomer(String id) throws Exception {

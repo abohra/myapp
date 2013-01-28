@@ -107,8 +107,9 @@ $(document).ready(function(){
                         Accept : "application/json"
                     },
                     url:"http://localhost:8080/patent/rest/customer/delete/"+dataForSearch,
-                    type:"GET"
-                
+                    type:"GET",
+                    contentType:"application/json;",
+                    dataType:"applicaion/json"
                 }).done(function( msg ) {
                     alert(msg);
                 });

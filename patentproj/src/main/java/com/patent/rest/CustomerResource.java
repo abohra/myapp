@@ -77,8 +77,8 @@ public class CustomerResource {
 
 	@GET
 	@Path("/delete/{id}")
-	public int deleteCustomer(@PathParam("id")String id) {
-		int numRowsDeleted=0;
+	public String deleteCustomer(@PathParam("id")String id) {
+		String numRowsDeleted = null;
 		try {
 			numRowsDeleted= customerDao.DeleteCustomer(id);
 		} catch (Exception e) {
