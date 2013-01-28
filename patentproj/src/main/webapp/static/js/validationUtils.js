@@ -3,9 +3,12 @@ function RequiredField(className){
     $("."+className).each(function(){
         var value = $(this).val();
         var id = $(this).attr("id");
-        if(value == "" || value == "undefined" || value == null){
-            AreAllFieldsValid = false;
-            ShowErrorMessage($(this),errorMessage[id+reqSuffix]);
+  
+        if($(this).hasClass("watermarkText") && $(this).hasClass(className)){
+            //if(value == "" || value == "undefined" || value == null){
+                AreAllFieldsValid = false;
+                ShowErrorMessage($(this),errorMessage[id+reqSuffix]);
+            //}
         }
     }); 
     return AreAllFieldsValid;
@@ -68,21 +71,21 @@ function TextValidation(className){
 }
 
 function ValidateInputs(){
-    if(false == RequiredField("requiredValidation")){
+    if(false == RequiredField(requiredFieldClass)){
         return false;
     }
-    if(false == EmailValidation("requiredValidation")){
-        return false;
-    }
-    if(false == MobileValidation("requiredValidation")){
-        return false;
-    }
-    if(false == PincodeValidation("requiredValidation")){
-        return false;
-    }
-    if(false == TextValidation("requiredValidation")){
-        return false;
-    }
+//    if(false == EmailValidation("requiredValidation")){
+//        return false;
+//    }
+//    if(false == MobileValidation("requiredValidation")){
+//        return false;
+//    }
+//    if(false == PincodeValidation("requiredValidation")){
+//        return false;
+//    }
+//    if(false == TextValidation("requiredValidation")){
+//        return false;
+//    }
     return true;
 }
 

@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-         <!-- Stylish Sheets Include Start -->
+        <!-- Stylish Sheets Include Start -->
         <link href="static/css/main.css" rel="stylesheet" type="text/css">
         <link href="static/css/common.css" rel="stylesheet" type="text/css">
         <link href="static/css/newuser.css" rel="stylesheet" type="text/css">
@@ -11,9 +11,7 @@
         <!-- Stylish Sheets Include End -->
     </head>
     <body>
-        <header class="mainHeader">
-        </header>
-       <div id="pageContanier">
+        <div id="pageContanier">
             <header class="mainHeading">
                 <hgroup>
                     <h1>Hi there. Welcome to Portal!</h1>
@@ -25,14 +23,14 @@
                     <section class="mainFormBlock">
                         <section class="inputLBLContainer">
                             <header>
-                                <label>First name</label>
+                                <label>Customer name</label>
                             </header>
                             <section class="textbox">
-                                <input type="text" name="firstname" class="watermarkText inputBox" id="firstname"/>
+                                <input type="text" name="name" class="watermarkText inputBox" id="name"/>
                             </section>
-                            <span class="requiredField hide">First name is required</span>
+                            <span class="requiredField hide">Customer name is required</span>
                         </section>
-                        <section class="inputLBLContainer">
+<!--                        <section class="inputLBLContainer">
                             <header>
                                 <label>Last name</label>
                             </header>
@@ -40,7 +38,7 @@
                                 <input type="text" name="lastname" class="watermarkText inputBox" id="lastname"/>
                             </section>
                             <span class="requiredField hide">Last name is required</span>
-                        </section>
+                        </section>-->
                         <section class="inputLBLContainer">
                             <header>
                                 <label>Email Address</label>
@@ -63,25 +61,26 @@
                             <header>
                                 <label>Address</label>
                             </header>
-                            <section class="textbox">
-                                <input type="text" name="addressline1" class="marginBottomTxtBox watermarkText inputBox" id="addressline1" />
-                            </section>
-                            <span class="requiredField hide">Address line1 cant be empty</span>
-                            <section class="textbox">
-                                <input type="text" name="addressline2" class="marginBottomTxtBox watermarkText inputBox" id="addressline2"/>
-                            </section>
-                            <section class="textbox">
-                                <input type="text" name="city" class="marginBottomTxtBox inputCityTxtBox watermarkText inputBox" id="city" />
-                            </section>
-                            <span class="requiredField hide">City cant be empty</span>
-                            <section class="textbox">
-                                <input type="text" name="state" class="marginBottomTxtBox inputStateTxtBox watermarkText inputBox" id="state"/>
-                            </section>
-                            <span class="requiredField hide">State cant be empty</span>
-                            <section class="textbox">
-                                <input type="text" name="pincode" class="marginBottomTxtBox watermarkText inputBox" id="pincode"/>
-                            </section>
-                            <span class="requiredField hide">Pincode cant be empty</span>
+                            <!--                            <section class="textbox">
+                                                            <input type="text" name="addressline1" class="marginBottomTxtBox watermarkText inputBox" id="addressline1" />
+                                                        </section>
+                                                        <span class="requiredField hide">Address line1 cant be empty</span>
+                                                        <section class="textbox">
+                                                            <input type="text" name="addressline2" class="marginBottomTxtBox watermarkText inputBox" id="addressline2"/>
+                                                        </section>
+                                                        <section class="textbox">
+                                                            <input type="text" name="city" class="marginBottomTxtBox inputCityTxtBox watermarkText inputBox" id="city" />
+                                                        </section>
+                                                        <span class="requiredField hide">City cant be empty</span>
+                                                        <section class="textbox">
+                                                            <input type="text" name="state" class="marginBottomTxtBox inputStateTxtBox watermarkText inputBox" id="state"/>
+                                                        </section>
+                                                        <span class="requiredField hide">State cant be empty</span>
+                                                        <section class="textbox">
+                                                            <input type="text" name="pincode" class="marginBottomTxtBox watermarkText inputBox" id="pincode"/>
+                                                        </section>
+                                                        <span class="requiredField hide">Pincode cant be empty</span>-->
+                            <textarea rows="8" class="watermarkText textArea" name="address" id="address">Address</textarea>
                         </section>
                     </section>
                     <section class="mainFormBlock marginLeftOtherThanFirstBlock">
@@ -92,14 +91,14 @@
                 </form>
             </div>
         </div>
-        
+
         <!-- java script includes start-->
         <script type="text/javascript" src="static/js/jquery-1.9.0.js"></script> 
         <script type="text/javascript" src="static/js/common.js"></script>
         <script type="text/javascript" src="static/js/customer.js"></script> 
         <script type="text/javascript" src="static/js/config.js"></script> 
         <script type="text/javascript" src="static/js/validationUtils.js"></script> 
-        
+
         <!-- java script includes end-->
     </body>
 </html>

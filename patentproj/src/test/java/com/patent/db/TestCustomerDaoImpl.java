@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.patent.bean.CustomerBean;
+
 @Component 
 public class TestCustomerDaoImpl {
 	AbstractXmlApplicationContext context;
@@ -57,4 +59,17 @@ public class TestCustomerDaoImpl {
 //		dao.deleteTest(id);
 //		Assert.assertNull(dao.getTestBean(id));
 //	}
+	@Test
+	public void testCustomerDelete() throws Exception {
+		CustomerDaoBean customer = new CustomerDaoBean("test","test@test.com","999999","hyd");
+		String id1 = customerDao.CreateCustomer(customer);
+		System.out.println("User Object *********************:"+customerDao.GetCustomer(id1));
+		Assert.assertNotNull(customerDao.GetCustomer(id1));
+		String originalContactNumber = customer.getContactNumber();
+		customer.setContactNumber("123");
+		customerDao.UpdateCustomer(customer);
+		Assert.assertNotSame(originalContactNumber, customer.getContactNumber());
+		customerDao.DeleteCustomer(id1);
+		Assert.assertNull(customerDao.GetCustomer(id1));
+	}
 }

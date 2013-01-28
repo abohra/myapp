@@ -1,18 +1,11 @@
-/* 
-    Document   : newuser
-    Created on : Jan 13, 2013, 1:50:41 PM
-    Author     : AVINASH
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-root { 
-    display: block;
+.add-on{
+    min-height: 28px;
+    min-width: 28px;
 }
 
 #mainContent{
     width:870px;
-    height:600px;
+    height:800px;
     display: block;
     padding: 19px 38px;
     padding-right: 1px;
@@ -50,10 +43,6 @@ root {
     margin-left: 180px;
 }
 
-.dropdown{
-    
-}
-
 .textbox{
     float:left;
 }
@@ -61,4 +50,28 @@ root {
 .textArea{
     width:310px;
     resize:none;
+}
+
+.usertype{
+    min-width: 200px;
+}
+
+.go{
+    float: left;
+}
+
+.buttons{
+    margin-top: 20px;
+}
+
+.edit{
+    margin-right: 20px;
+}
+
+.delete{
+    margin-right: 150px;
+}
+
+#search{
+    cursor: pointer;
 }

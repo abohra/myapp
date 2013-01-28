@@ -1,7 +1,6 @@
-var page = "customer";
+var page = "user";
 
 $(document).ready(function(){
-    
     init();
     
     $('.inputBox').focusin(function(){
@@ -20,19 +19,24 @@ $(document).ready(function(){
         //        }
         var data ={
             "customerId":"",
-            "customerName":$("#name").val(),
+            "fName":$("#firstname").val(),
+            "lName":$("#lastname").val(),
             "emailAddress":$("#emailaddress").val(),
             "contactNumber":$("#mobilenumber").val(),
-            "address":$("#address").val()
+            "address":$("#address").val(),
+            "role":$("#role").val()
         }
+        
+    
+    
         $.ajax({
-            url:"http://localhost:8080/patent/rest/customer/create",
+            url:"http://localhost:8080/patent/rest/user/create",
             type:"POST",
             data:JSON.stringify(data),
             contentType:"application/json;",
             dataType:"applicaion/json",
             success: function(returnedData){
-                alert(returnedData);
+                alert("User Added Successfully\n"+"User Id"+ " " +returnedData);
             }
         })
     });
@@ -42,8 +46,8 @@ $(document).ready(function(){
 
 function init(){
     AttachHeader();
-    SetWaterMarks();
-    SetFieldsToBeValidated()
+    //SetWaterMarks();
+    //SetFieldsToBeValidated()
     //SetFormAttributes("newCustomerForm",config["newCustomer"],"POST");
 }
 
@@ -101,20 +105,3 @@ function SetPincodeFields(){
     }
 }
 
-//$('#GetCustomer').click(function(){
-//        var data ={
-//            "customerId":$("#customerId").val()
-//        }
-//        $.ajax({
-//            headers: { 
-//                Accept : "application/json"
-//            },
-//            url:"http://localhost:8080/patent/rest/customer/fetch/"+data.customerId,
-//            type:"GET",
-//            contentType:"application/json;",
-//            dataType:"applicaion/json",
-//            success: function(returnedData){
-//                alert(returnedData);
-//            }
-//        })
-//    });

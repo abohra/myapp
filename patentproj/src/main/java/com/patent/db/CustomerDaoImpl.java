@@ -49,7 +49,7 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			numRowsDeleted = session.createQuery(
-					"delete from Customer customerBean where customerBean.customerId = ?")
+					"delete from CustomerDaoBean customerDaoBean where customerDaoBean.customerId = ?")
 					.setString(0, id)
 					.executeUpdate();
 			session.getTransaction().commit();
@@ -78,9 +78,9 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		Session session = null;
 		try{
 			session = sessionFactory.openSession();
+			session.beginTransaction();
 			session.saveOrUpdate(updatedCustomer);
 			session.getTransaction().commit();
-
 		}finally{
 			if(session != null){
 				session.close();

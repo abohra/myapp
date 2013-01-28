@@ -100,3 +100,15 @@ h1, h2, h3, h4, h5, h6 {
 .hide{
     display:none;
 }
+
+.clear{
+    clear: both;
+}
+
+.floatLeft{
+    float: left;
+}
+
+.floatRight{
+    float: right;
+}

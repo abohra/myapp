@@ -5,6 +5,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,7 @@ public class CustomerResource {
 
 	@GET
 	@Path("/fetch/{id}")
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public CustomerBean getCustomer(@PathParam("id")String id) {
 		CustomerDaoBean customerDBDetailsBean = null;
 		CustomerBean customerDetailsBean = null;
@@ -75,11 +77,13 @@ public class CustomerResource {
 
 	@GET
 	@Path("/delete/{id}")
-	public void deleteCustomer(@PathParam("id")String id) {
+	public int deleteCustomer(@PathParam("id")String id) {
+		int numRowsDeleted=0;
 		try {
-			customerDao.DeleteCustomer(id);
+			numRowsDeleted= customerDao.DeleteCustomer(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return numRowsDeleted;
 	}
 }

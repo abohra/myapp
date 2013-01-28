@@ -42,10 +42,7 @@ function GetWaterMarkTextForCustomer(id){
 }
 
 function AttachHeader(){
-    var headerSection = document.createElement('header');
-    headerSection.setAttribute('class','mainHeader');
-    $(document).prepend(headerSection);
-    return;
+    $('body').prepend("<header class='mainHeader'></header>");
 }
 
 function AttachFooter(){
