@@ -1,5 +1,7 @@
 package com.patent.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +18,7 @@ import com.patent.bean.ConverterUtility;
 import com.patent.bean.CustomerBean;
 import com.patent.db.CustomerDaoBean;
 import com.patent.db.CustomerDaoImpl;
+import com.patent.db.User;
 
 @Component
 @Path("/customer")
@@ -86,4 +89,9 @@ public class CustomerResource {
 		}
 		return numRowsDeleted;
 	}
+	@GET
+    @Path("allCustomers/")
+    public List<CustomerDaoBean> listOfUser() throws Exception {
+   	 return customerDao.ListOfCustomer();
+    }
 }

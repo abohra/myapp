@@ -1,5 +1,8 @@
 package com.patent.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.patent.bean.ConverterUtility;
 import com.patent.bean.UserBean;
+import com.patent.bean.UserList;
 import com.patent.db.AbstractUserDao;
 import com.patent.db.User;
 
@@ -68,6 +72,11 @@ public class UserResource {
 		userDao.deleteUser(id);
 	}
 
-
+     @GET
+     @Path("allUsers/")
+     @Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+     public UserList listOfUser() throws Exception {
+    	 return new UserList(new ArrayList<User> (userDao.listOfUser()));
+     }
 
 }

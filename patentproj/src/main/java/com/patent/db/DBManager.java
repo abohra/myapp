@@ -50,7 +50,7 @@ public class DBManager {
 		return customerdao.UpdateCustomer(updatedCustomer);
 	}
 
-	public int deleteCustomer(String id) throws Exception{
+	public String deleteCustomer(String id) throws Exception{
 		return customerdao.DeleteCustomer(id);
 	}
 	public CustomerDaoBean getCustomer(String id) throws Exception{
