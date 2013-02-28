@@ -1,7 +1,6 @@
 package com.patent.rest;
 
-import java.util.List;
-
+import java.util.ArrayList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,27 +10,26 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.patent.bean.ConverterUtility;
 import com.patent.bean.CustomerBean;
+import com.patent.bean.CustomerList;
+import com.patent.db.AbstractCustomerDao;
 import com.patent.db.CustomerDaoBean;
-import com.patent.db.CustomerDaoImpl;
-import com.patent.db.User;
 
 @Component
 @Path("/customer")
 public class CustomerResource {
 
-	private CustomerDaoImpl customerDao;
+	private AbstractCustomerDao customerDao;
 
-	public CustomerDaoImpl getCustomerDao() {
+	public AbstractCustomerDao getCustomerDao() {
 		return customerDao;
 	}
 
 	@Autowired
-	public void setCustomerDao(@Qualifier("customerDao") CustomerDaoImpl customerDao) {
+	public void setCustomerDao(AbstractCustomerDao customerDao) {
 		this.customerDao = customerDao;
 	}
 
@@ -50,10 +48,11 @@ public class CustomerResource {
 	}
 
 	@POST
-	@Path("/update")
+	@Path("/update/{id}")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	public String editCustomer(CustomerBean customer){
+	public String editCustomer(@PathParam("id")String id,CustomerBean customer){
 		CustomerDaoBean updatedCustomerDBBean = ConverterUtility.getCustomerDaoBeanFromCustomerBean(customer);
+		updatedCustomerDBBean.setCustomerId(id);
 		String customerId = null;
 		try {
 			customerId = customerDao.UpdateCustomer(updatedCustomerDBBean);
@@ -91,7 +90,18 @@ public class CustomerResource {
 	}
 	@GET
     @Path("allCustomers/")
-    public List<CustomerDaoBean> listOfUser() throws Exception {
-   	 return customerDao.ListOfCustomer();
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+    public CustomerList listOfUser() throws Exception {
+   	  return new CustomerList(new ArrayList<CustomerDaoBean> (customerDao.ListOfCustomer()));
+	/*	List<CustomerDaoBean> cust = new ArrayList<CustomerDaoBean>();
+		CustomerDaoBean bean = new CustomerDaoBean("Ankur", "ankur@admin.com", "123", "abc");
+		cust.add(bean);
+		bean = new CustomerDaoBean("Amit", "amit@admin.com", "567", "xyz");
+		cust.add(bean);
+		bean = new CustomerDaoBean("Arya", "arya@admin.com", "765", "pop");
+		cust.add(bean);
+		return new CustomerList(cust);
+		*/
+		
     }
 }

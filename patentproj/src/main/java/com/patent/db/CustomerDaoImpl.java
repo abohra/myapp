@@ -94,7 +94,7 @@ public class CustomerDaoImpl implements AbstractCustomerDao{
 		List<CustomerDaoBean> listOfCustomer = null;
 		try{
 			session = sessionFactory.openSession();
-			listOfCustomer = (List<CustomerDaoBean>)session.createQuery("FROM Customer").list();
+			listOfCustomer = (List<CustomerDaoBean>)session.createQuery("FROM CustomerDaoBean").list();
 		} finally{
 			if(session != null){
 				session.close();

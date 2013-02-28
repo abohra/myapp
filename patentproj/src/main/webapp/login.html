@@ -1,50 +1,49 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login to portal</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" 
+      src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="patent.js"></script>
+</head>
 
-        <!-- Stylish Sheets Include Start -->
-        <link href="static/css/main.css" rel="stylesheet" type="text/css">
-        <link href="static/css/common.css" rel="stylesheet" type="text/css">
-        <link href="static/css/login.css" rel="stylesheet" type="text/css">
-        <link href="static/css/header.css" type="text/css" rel="stylesheet" />
-        <!-- Stylish Sheets Include End -->
-    </head>
-    <body>
-        <header class="mainHeader">
-        </header>
-        <div id="pageContanier">
-            <header class="mainHeading">
-                <hgroup>
-                    <h1>Login to Portal</h1>
-                    <h2>Automates Patent filling</h2>
-                </hgroup>
-            </header>
-            <div id="mainContent">
-                <form class="loginForm mainForm" action="user.html">
-                    <section class="inputLBLContainer">
-                        <header>
-                            <label>Username</label>
-                        </header>
-                        <section class="textbox">
-                            <input type="text" name="username" value="Username or email" class="watermarkText"/>
-                        </section>
-                    </section>
-                    <section class="inputLBLContainer">
-                        <header>
-                            <label>Password</label>
-                        </header>
-                        <section class="textbox">
-                            <input type="password" name="password" value="Password" class="watermarkText"/>
-                        </section>
-                    </section>
-                    <section class="loginBTN">
-                        <input type="submit" value="Login" class="btn btn-primary"/>
-                    </section>
-                </form>
-                <label class="marginLeftForRegister">Don't have an account? Register now</label>
-            </div>
-        </div>
-    </body>
+<body>
+<div id="wrapper">
+	<div id="header"></div>
+    
+    <div id="content">
+
+		<div id="leftpan">
+        </div> <!-- leftpan -->
+
+        <div id="rightpan">
+
+    <div id="login">
+    	<div id="elements">
+        	<form action="" name="">
+
+            	<LABEL class="label-text" for="username">User Name</LABEL>
+                <INPUT class="data" type='text' name='userid' id="userid"	size="15" value='' maxlength="100"/><br />
+                
+                <LABEL class="label-text" for="email">Email</LABEL>
+                <INPUT class="data" type='text' name='email' id="email"	size="15" value='' maxlength="100"/><br />
+                
+               	<div id="button-sub">
+					<input class="sub" name="sub" id="sub" type="submit" value="Submit" />
+                    					<input class="sub" name="cancel" type="cancel" value="Cancel" />
+
+				</div>
+                
+            </form>
+        </div> <!-- elements -->
+    </div>  <!-- login -->
+
+        </div> <!-- rightpan -->
+
+    </div> <!-- content -->
+    <div id="footer"> </div>    
+</div>
+</body>
 </html>

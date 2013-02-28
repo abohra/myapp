@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" 
+      src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="patent.js"></script>
+<script type="text/javascript">
+ $(document).ready(function () {
+       var params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+    params[key] = value;
+  });
+document.getElementById("user").innerHTML="User: " +params.userid;
+});
+
+</script>
+
+
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+    	<div id="head2">
+        	<a href=""><img src="images/logout.png" /></a>
+            <p id="user"></p> 
+        </div> <!-- head2-->
+    </div> <!-- header -->
+    
+    <div id="content">
+
+		<div id="leftpan">
+        	<div id="options">
+            	<ul>
+                	<li> <label><a href="cust-list.html">Customer Management</a></label>
+                    </li>
+                    <li> <label><a href="">Patent Management</a></label></li>
+                    <li> <label><a href="">User Management</a></label></li>
+                    <li> <label><a href="">Reports</a></label></li>                                        
+                </ul>    
+            </div>
+        </div> <!-- leftpan -->
+        
+        <div id="rightpan">
+			<div id="alertslist">
+            	<h2>Alerts</h2>
+                
+                
+		<table border="1" width="100%" style="border-collapse: collapse">
+	<thead>
+	<tr>
+		<td width="25%">Date</td>
+		<td width="25%">CaseID</td>
+		<td width="25%">State</td>
+		<td width="25%">Description</td>
+	</tr>
+    </thead>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+</table>
+                
+            </div> <!-- alertlist -->
+<br/>
+			<div id="reminderlist">
+            	<h2>Reminders</h2>
+                
+                
+		<table border="1" width="100%" style="border-collapse: collapse">
+	<thead>
+	<tr>
+		<td width="25%">Date</td>
+		<td width="25%">CaseID</td>
+		<td width="25%">State</td>
+		<td width="25%">Description</td>
+	</tr>
+    </thead>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+</table>
+                
+            </div> <!-- reminderlist -->
+
+        </div> <!-- rightpan -->
+
+    </div> <!-- content -->
+
+<div id="footer"> </div>    
+</div>
+</body>
+</html>
