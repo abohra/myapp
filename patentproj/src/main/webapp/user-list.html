@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Customer Listing</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" 
+      src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+
+     $(document).ready(function () {
+        getUsers();
+    });       
+    getUsers = function () {
+        $.ajax({
+            cache: true,
+            url: "http://localhost:8080/patent/rest/user/allUsers/",
+            data: "{}",
+            type: "GET",
+            jsonpCallback: "parseResponse",
+            contentType: "application/javascript",
+            dataType: "json",
+            error: ajaxCallFailed,
+            failure: ajaxCallFailed,
+            success: parseResponse
+        });          
+         
+    };
+    deleteUser = function(userId){
+    alert("Do yo really want to delete customer!");
+    $.ajax({
+            cache: true,  
+            url: "http://localhost:8080/patent/rest/user/delete/"+userId,
+            type: "GET",
+            dataType: "json",
+            success: function(data, textStatus,jqXHR){
+            }, 
+            error: function(jqXHR, textStatus,errorThrown){
+            alert("Error occured while deleting user:" + textStatus); 
+	    },
+            
+        });     
+};
+     // Called if ajax call fails
+    ajaxCallFailed = function (jqXHR, textStatus) { 
+        console.log("Error: " + textStatus);
+        console.log(jqXHR);
+        $("#employeeList").empty();
+        $("#employeeList").append("Error: " + textStatus);
+    };
+            
+    // Called if ajax call is successful
+    parseResponse = function (data) {
+    alert(data);
+       var users = data.listOfUsers;   
+        
+        var userList = "";
+        
+        userList = userList.concat("<ul style=list-style:none>");
+            
+            
+        
+        $.each(users, function(index, users) {
+            var userId= "user-add.html?userId=" + users.userId;
+            userList = userList.concat("<li style=float:left;width:100%;padding-top:5px;>" +
+		        "<span class='listdisp'><a href="+userId +"><img src='images/edit2.gif' title='Edit User' alt='Edit User'></a> </span>" +
+                "<span class='listdisp'><a href='' onclick=deleteUser('"+users.userId+"')><img src='images/garbage.gif' title='Delete User' alt='Delete User'></a> </span>"+
+                "<span class='listdisp'>"+users.fName+"</span>"  +
+                "<span class='listdisp'>"+users.lName+"</span>"  +
+                "<span class='listdisp'>"+users.emailAddress + "</span>" +
+                "<span class='listdisp'>"+users.contactNumber + "</span>" +
+                "<span class='listdisp'>"+users.address + "</span>" +
+                "<span class='listdisp'>"+users.role + "</span>" +
+                "</li>" + "</br>");
+
+
+        });
+        userList = userList.concat("</ul>");
+        $("#userList").empty();
+        $("#userList").append(userList);
+      //  colorRows();
+    
+};
+    
+   
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+    	<div id="head2">
+        	<a href=""><img src="images/logout.png" /></a>
+            <p>User: ABC Deshpande</p>
+        </div> <!-- head2-->
+    </div> <!-- header -->
+    
+    <div id="content">
+
+		<div id="leftpan">
+        	<div id="options">
+            	<ul>
+                	<li> <label><a href="cust-list.html">Customer Management</a></label>
+                    </li>
+                    <li> <label><a href="">Patent Management</a></label></li>
+                    <li> <label><a href="user-list.html">User Management</a></label></li>
+                    <li> <label><a href="">Reports</a></label></li>                                        
+                </ul>    
+            </div>
+        </div> <!-- leftpan -->
+        
+        <div id="rightpan">
+			
+            <h2>User Management - List</h2>
+            <div id="userList">
+                          
+            </div> <!-- formlist-->
+<br/>
+
+		<div id="opr">
+        	<ul>
+            	<li><a href="user-add.html">Add New</a></li>
+            </ul>
+        </div>
+
+        </div> <!-- rightpan -->
+
+    </div> <!-- content -->
+
+<div id="footer">
+	
+</div>    
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" 
+      src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+     $(document).ready(function () {
+       var params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+    params[key] = value;
+  });
+    if(params!='undefined' && params.userId!=null){
+    // alert(params.userId);
+     getUser(params.userId);
+    }
+    }); 
+
+  getUser = function(userId){
+   $.ajax({
+            cache: true,  
+            url: "http://localhost:8080/patent/rest/user/fetch/"+userId,
+            type: "GET",
+            dataType: "json",
+            success: function(data, textStatus,jqXHR){
+            //alert(data);
+            $('#fname').val(data.fName); 
+            $('#lname').val(data.lName);
+    	    $('#useremail').val(data.emailAddress);
+    	    $('#usercont').val(data.contactNumber);
+    	    $('#useradd').val(data.address);
+    	    $('#role').val(data.role);
+            }, 
+            error: function(jqXHR, textStatus,errorThrown){
+            alert("Error occured while creating customer:" + textStatus); 
+	    },
+            
+        });     
+
+};
+submit = function(){
+ var params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+    params[key] = value;
+  });
+    if(params!='undefined' && params.userId!=null){
+    // alert(params.userId);
+     updateUser(params.userId);
+    }
+    else{
+    addUser();
+    }
+};
+updateUser = function(userId){
+$.ajax({
+            cache: true,  
+            url: "http://localhost:8080/patent/rest/user/update/" + userId,
+            data: formToJSON(),
+            type: "POST",
+           // jsonpCallback: "parseResponse",
+            contentType: "application/json",
+            dataType: "text",
+            success: function(data, textStatus,jqXHR){
+            alert('User updated successfully'); 
+            }, 
+            error: function(jqXHR, textStatus,errorThrown){
+            alert("Error occured while updating user:" + textStatus); 
+	    },
+            
+        });          
+};   
+
+addUser = function(){
+$.ajax({
+            cache: true,  
+            url: "http://localhost:8080/patent/rest/user/create/",
+            data: formToJSON(),
+            type: "POST",
+           // jsonpCallback: "parseResponse",
+            contentType: "application/json",
+            dataType: "text",
+            success: function(data, textStatus,jqXHR){
+            alert('User created successfully'); 
+            }, 
+            error: function(jqXHR, textStatus,errorThrown){
+            alert("Error occured while creating user:" + textStatus); 
+	    },
+            
+        });          
+};
+formToJSON = function(){
+return JSON.stringify({
+    "fName":$('#fname').val(),
+    "lName":$('#lname').val(),
+    "emailAddress":$('#useremail').val(),
+    "contactNumber":$('#usercont').val(),
+    "address":$('#useradd').val(),
+    "role":$('#role').val(), 
+});
+};
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+    	<div id="head2">
+        	<a href=""><img src="images/logout.png" /></a>
+            <p>User: ABC Deshpande</p>
+        </div> <!-- head2-->
+    </div> <!-- header -->
+    
+    <div id="content">
+
+		<div id="leftpan">
+        	<div id="options">
+            	<ul>
+                	<li> <label><a href="cust-list.html">Customer Management</a></label>
+                    </li>
+                    <li> <label><a href="">Patent Management</a></label></li>
+                    <li> <label><a href="user-list.html">User Management</a></label></li>
+                    <li> <label><a href="">Reports</a></label></li>                                        
+                </ul>    
+            </div>
+        </div> <!-- leftpan -->
+        
+        <div id="rightpan">
+            	<h2>Customer Management - Add</h2>
+			<div id="formdata">
+               
+                <ul>
+   	           	
+   	           	<li><label class="formdata-label">First Name:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="fname" id="fname" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+                	<li><label class="formdata-label">Last Name:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="lname" id="lname" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+
+   	           	<li><label class="formdata-label">Email:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="useremail" id="useremail" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+
+   	           	<li><label class="formdata-label">Contact:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="usercont" id="usercont" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+
+   	           	<li><label class="formdata-label">Address:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="useradd" id="useradd" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+                <li><label class="formdata-label">Role:</label>
+                <span class='forminp'>
+                    <input class='inputbox' size="20" name="role" id="role" type='text' value=""  maxlength='255' tabIndex='1' /> 
+                </span>
+				</li>
+   	           	
+ 
+                </ul>
+            </div> <!-- custdata-->
+            <div id="button-sub">
+					<input class="sub" name="sub" id="sub" type="submit" value="Submit" onClick="submit()" />
+                    					<input class="sub" name="cancel" type="cancel" value="Cancel" />
+
+				</div>
+<br/>
+
+        </div> <!-- rightpan -->
+
+    </div> <!-- content -->
+
+<div id="footer">
+	
+</div>    
+</div>
+</body>
+</html>

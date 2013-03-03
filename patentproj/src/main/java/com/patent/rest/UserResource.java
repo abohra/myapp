@@ -58,9 +58,10 @@ public class UserResource {
 	}
 	@POST
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	@Path("update/")
-	public String updateUser(UserBean userBean)throws Exception{
+	@Path("update/{id}")
+	public String updateUser(@PathParam("id")String id,UserBean userBean)throws Exception{
 		User user = ConverterUtility.getUserFromUserBean(userBean);
+		user.setUserId(id);
 		return userDao.editUser(user);
 	}
 
